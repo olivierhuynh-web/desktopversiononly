@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export const disappearText = (text, main) => {
+export const disappearText = (text, main, onComplete) => {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.fromTo(
@@ -24,6 +24,7 @@ export const disappearText = (text, main) => {
         onLeave: () => {
           console.log('Animation désactivée');
         },
+        onComplete: onComplete,
       },
     }
   );
