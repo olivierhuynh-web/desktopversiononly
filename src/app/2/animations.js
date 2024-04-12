@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export const rotatePortrait = (picture, section_2) => {
+export const rotatePortrait = (picture) => {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to(picture, {

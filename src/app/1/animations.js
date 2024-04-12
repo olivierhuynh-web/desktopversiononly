@@ -15,17 +15,18 @@ export const disappearText = (text, main, onComplete) => {
         pin: true, // pin the trigger element while active
         trigger: main,
         start: 'top top', // Commence l'animation lorsque le haut de l'élément principal atteint le centre de la fenêtre
-        // end: 'bottom top', // Termine l'animation lorsque le bas de l'élément principal atteint le centre de la fenêtre
+        end: 'bottom center', // Termine l'animation lorsque le bas de l'élément principal atteint le centre de la fenêtre
         scrub: 0.1,
         markers: true,
         onEnter: () => {
           console.log('Animation activée');
         },
-        onLeave: () => {
-          console.log('Animation désactivée');
+        onScrubComplete: () => {
+          console.log('Animation terminée');
+          onComplete();
         },
-        onComplete: onComplete,
       },
     }
   );
+  // return timeline;
 };

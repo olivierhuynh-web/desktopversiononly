@@ -7,6 +7,7 @@ export default function Portrait({ timeline }) {
   const picture = useRef(null);
 
   useEffect(() => {
+    console.log('oi');
     timeline && timeline.add(rotatePortrait(picture.current));
   }, [timeline]);
   return (

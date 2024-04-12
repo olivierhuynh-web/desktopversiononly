@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 
 import NavigationContextProvider from '../contexts/NavigationContext'; // Importez le composant qui enveloppe le contexte
+// import { currentComponent } from '../contexts/NavigationContext'; // Importez le contexte en tant qu'export par défaut
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={inter.className}>
         <NavigationContextProvider>{children}</NavigationContextProvider>
+        {/* {currentComponent === 1 && <Title timeline={timeline} />}{' '} */}
         <div className='instructions'>scroll down</div>
       </body>
     </html>
