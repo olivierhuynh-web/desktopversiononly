@@ -7,46 +7,37 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect } from 'react';
-
 export default function Title({ timeline }) {
   const { handleNextComponent } = useNavigation();
   const text = useRef(null);
   const main = useRef(null);
-  const animation = useRef(null); // Ajoutez cette ligne
+  const animation = useRef(null);
 
-  // useEffect(() => {
-  //   timeline &&
-  //     timeline.add(
-  //       disappearText(text.current, main.current, () => {
-  //         handleNextComponent({ Number: 2 });
-  //         console.log('test');
-  //       })
-  //     );
-  // }, [timeline, handleNextComponent]);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger); // Initialiser ScrollTrigger une seule fois
+  }, []);
 
-  // useGSAP(() => {
-  //   timeline &&
-  //     timeline.add(
-  //       disappearText(text.current, main.current, () => {
-  //         handleNextComponent({ Number: 2 });
-  //         console.log('test');
-  //       })
-  //     );
-  // }, [timeline, handleNextComponent]);
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     animation.current = disappearText(text.current, main.current, () => {
       handleNextComponent({ Number: 2 });
-      console.log('test');
+      console.log('Animation terminée');
     });
 
     timeline && timeline.add(animation.current);
 
-    // Fonction de nettoyage
     return () => {
-      // Tuer l'animation
-      animation.current && animation.current.kill();
-      ScrollTrigger.getAll().forEach((ST) => ST.disable());
+      if (animation.current && animation.current.target) {
+        const parentElement = animation.current.target.parentElement;
+        // text.current = null;
+        // main.current = null;
+        // animation.current = null;
+        // if (parentElement) {
+        //   parentElement.removeChild(animation.current.target); // Supprimez l'élément du DOM s'il existe dans son parent
+        // }
+
+        animation.current.kill(); // Arrêtez et supprimez l'animation
+      }
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Désactivez tous les ScrollTriggers
     };
   }, [timeline, handleNextComponent]);
 

@@ -2,6 +2,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export const disappearText = (text, main, onComplete) => {
+  if (!text || !main) {
+    return;
+  }
+
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.fromTo(
@@ -9,24 +13,24 @@ export const disappearText = (text, main, onComplete) => {
     { autoAlpha: 1 },
     {
       autoAlpha: 0,
-      // color: 'green',
-      // backgroundColor: 'black',
       scrollTrigger: {
-        pin: true, // pin the trigger element while active
+        pin: true,
         trigger: main,
-        start: 'top top', // Commence l'animation lorsque le haut de l'élément principal atteint le centre de la fenêtre
-        end: 'bottom center', // Termine l'animation lorsque le bas de l'élément principal atteint le centre de la fenêtre
-        scrub: 0.1,
+        start: 'top top',
+        end: 'bottom center',
+        scrub: 1,
         markers: true,
         onEnter: () => {
           console.log('Animation activée');
         },
         onScrubComplete: () => {
           console.log('Animation terminée');
-          onComplete();
+          if (document.body.contains(text)) {
+            // onComplete();
+          }
         },
       },
     }
   );
-  // return timeline;
 };
+// return timeline;
