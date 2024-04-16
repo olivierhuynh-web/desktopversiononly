@@ -8,13 +8,15 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Title({ timeline }) {
+  const router = useRouter();
   const { handleNextComponent } = useNavigation();
   const text = useRef(null);
   const main = useRef(null);
   const animation = useRef(null);
-
+  k;
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger); // Initialiser ScrollTrigger une seule fois
   }, []);
@@ -22,8 +24,8 @@ export default function Title({ timeline }) {
   useGSAP(
     () => {
       animation.current = disappearText(text.current, main.current, () => {
-        console.log('tesTTTT');
         handleNextComponent({ Number: 2 });
+        router.push('/2'); // Naviguer vers une autre page
       });
 
       if (

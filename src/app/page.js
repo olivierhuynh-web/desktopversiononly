@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 
 import Title from './1/page';
-import Portrait from './2/portrait';
+import Portrait from './2/page';
 
 import NavigationContextProvider from '../contexts/NavigationContext'; // Importez le composant qui enveloppe le contexte
 import NavigationContext from '../contexts/NavigationContext'; // Importez le contexte en tant qu'export par défaut

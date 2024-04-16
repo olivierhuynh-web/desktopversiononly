@@ -2,7 +2,7 @@
 import { Inter } from 'next/font/google';
 // import './globals.css';
 
-import NavigationContextProvider from '../contexts/NavigationContext'; // Importez le composant qui enveloppe le contexte
+// import NavigationContextProvider from '../contexts/NavigationContext'; // Importez le composant qui enveloppe le contexte
 
 const inter = Inter({ subsets: ['latin'] });
 
