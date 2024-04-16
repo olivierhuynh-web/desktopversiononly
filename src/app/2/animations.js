@@ -25,8 +25,12 @@ export const flashPortrait = (picture, main, imageContainer, setNumber) => {
         // Calcul de la nouvelle coordonnée x
         const x = imageIndex * 100;
 
-        // Mise à jour de la coordonnée x de l'image
+        // Calcul de la nouvelle échelle
+        const scale = 0.8 + scrollPosition / totalScrollHeight;
+
+        // Mise à jour de la coordonnée x de l'image et de l'échelle
         gsap.to(imageContainer, {
+          scale: scale,
           x: x,
           // duration: 0.5,
           ease: 'linear',
