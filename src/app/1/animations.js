@@ -21,12 +21,12 @@ export const disappearText = (text, main, onComplete) => {
         scrub: 1,
         markers: true,
         onEnter: () => {
-          console.log('Animation activée');
+          console.log('onEnter : Animation activée');
         },
         onScrubComplete: () => {
-          console.log('Animation terminée');
+          console.log('onScrumComplete : Animation terminée');
           if (document.body.contains(text)) {
-            // onComplete();
+            onComplete();
           }
         },
       },

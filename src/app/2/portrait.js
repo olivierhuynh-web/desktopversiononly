@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 // import styles from './page.module.scss';
 import React, { useRef, useEffect } from 'react';
