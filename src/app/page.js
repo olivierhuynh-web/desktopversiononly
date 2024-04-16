@@ -41,7 +41,11 @@ export default function Home() {
   return (
     <main>
       <div>
-        <button onClick={() => handleNextComponent(2)}>
+        <button
+          style={{ position: 'absolute', bottom: 0, zIndex: 9999 }}
+          onClick={() => handleNextComponent(2)}
+        >
+          {' '}
           changeCurrentComponent
         </button>
         <div>{currentComponent === 1 && <Title timeline={timeline} />} </div>

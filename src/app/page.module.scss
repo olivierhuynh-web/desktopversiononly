@@ -12,6 +12,10 @@
   }
 }
 
-main::-webkit-scrollbar {
-  width: 0 !important;
+.handleNextComponent {
+  position: absolute;
 }
+
+// main::-webkit-scrollbar {
+//   width: 0 !important;
+// }

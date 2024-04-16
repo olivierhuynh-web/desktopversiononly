@@ -23,11 +23,16 @@ export const disappearText = (text, main, onComplete) => {
         onEnter: () => {
           console.log('onEnter : Animation activée');
         },
+        // onToggle: () => {
+        //   console.log('onLeave : Animation activée');
+        // },
         onScrubComplete: () => {
-          console.log('onScrumComplete : Animation terminée');
-          if (document.body.contains(text)) {
-            onComplete();
-          }
+          console.log('onScrubComplete : Animation terminée');
+          onComplete();
+        },
+        onComplete: () => {
+          console.log('onComplete : Animation terminée');
+          onComplete();
         },
       },
     }

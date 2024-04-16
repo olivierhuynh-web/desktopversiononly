@@ -23,7 +23,6 @@ export default function Title({ timeline }) {
     () => {
       animation.current = disappearText(text.current, main.current, () => {
         console.log('tesTTTT');
-
         handleNextComponent({ Number: 2 });
       });
 
@@ -36,20 +35,18 @@ export default function Title({ timeline }) {
         console.log('ici');
       }
 
-      return () => {
-        if (animation.current && animation.current.target) {
-          // const parentElement = animation.current.target.parentElement;
-          // if (parentElement) {
-          //   parentElement.removeChild(animation.current.target); // Supprimez l'élément du DOM s'il existe dans son parent
-          // }
-
-          animation.current.kill(); // Arrêtez et supprimez l'animation
-        }
-        gsap.killTweensOf(animation.current);
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Désactivez tous les ScrollTriggers
-      };
+      // return () => {
+      //   if (animation.current && animation.current.target) {
+      //     animation.current.kill(); // Arrêtez et supprimez l'animation
+      //   }
+      //   gsap.killTweensOf(animation.current);
+      //   ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Désactivez tous les ScrollTriggers
+      // };
     },
-    { dependencies: [timeline, handleNextComponent], revertOnUpdate: true }
+    {
+      dependencies: [timeline, handleNextComponent],
+      revertOnUpdate: true,
+    }
   );
 
   return (
